@@ -1,0 +1,239 @@
+* {
+    outline: 0px solid rgb(237, 18, 18);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html, body{
+    min-height: 100%;
+    margin: 0;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    font-family:'Courier New', Courier, monospace;
+    min-height: 100vh; 
+}
+
+.body {
+  flex: 1;
+  display: flex;
+}
+
+.header-section{
+    position:sticky;
+    top: 0;
+    z-index:999;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    
+  
+    .header-subsection{
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+    
+        
+        .header-picture{
+            img{
+                border-radius: 50%;
+                width: 45px;
+           
+            }
+        }
+        .header-logo{
+            img{
+                height: 50px;
+                
+            }
+
+        }
+    }
+    .header-links{
+         align-items: center;
+        
+        ul{
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: rgb(4, 4, 4);
+        }
+
+    }
+}
+.hero-section{ 
+    display: flex;
+    padding-top: 100px;
+    padding-right: 100px;
+    padding-bottom: 50px;
+    padding-left: 100px;
+    
+    
+    .hero-text{
+        .hero-small-title{
+
+        }
+        .hero-title{
+            font-size: 100px;
+        
+        }
+        .hero-paragraph{
+            margin-top: 10px;
+            margin-bottom: 10px;
+
+        }
+        .hero-paragraph-two{
+            margin-top: 10px;
+            margin-bottom: 10px;
+
+        }
+        .hero-button{
+            margin-top: 10px;
+            margin-bottom: 10px;
+
+        }
+    }
+    .hero-image{
+        align-content: center;
+    
+        img{
+            width: 150px;
+            
+            
+        }
+
+    }
+}
+.information-section{
+    background-color: rgb(244, 227, 248);
+    padding-top: 50px;
+    padding-right: 100px;
+    padding-bottom: 50px;
+    padding-left: 100px;
+    justify-content: center;
+    text-align: center;
+
+    .information-title{
+        font-size: 50px;
+        padding-bottom: 10px;
+        
+        
+        
+        
+        
+        
+    }
+    .information-container{
+        justify-content: center;
+        
+      
+
+        .information-content{
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .information-subsection{
+             
+            img{ 
+                width: 50px;
+              
+            }           
+            .information-text{
+                
+                a{ 
+                    text-decoration: none;
+                    color: black;
+                }
+                
+            }
+        }
+
+    }
+    
+}
+.central-section{
+    display: flex;
+    justify-content: center;
+    padding-top:50px;
+    padding-right: 100px;;
+    padding-bottom: 50px;
+    padding-left: 100px;
+    .value-proposition-text{
+        
+       
+        .central-title{
+            
+        }
+        .central-paragraph{
+
+
+        }
+        
+        
+    }
+        
+    .central-signature{
+        text-align: end;
+       
+        
+
+    }
+
+            
+        
+}
+.cta-container{
+    
+    justify-content: center;
+    align-content: center;
+    padding-top:50px;
+    padding-right: 100px;;
+    padding-bottom: 50px;
+    padding-left: 100px;
+    
+      
+    .cta-text{
+       
+
+        p{
+          
+        }
+
+    }
+    .subscribe-input {
+        flex: 1;
+        padding: 12px 15px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px 0 0 4px; 
+        outline: none;
+        
+    }
+    .cta-button{
+        padding: 12px 24px;
+        font-size: 16px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        border-radius: 0 4px 4px 0; 
+        cursor: pointer;
+        
+}
+
+    }
+.footer-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
