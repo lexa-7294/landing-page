@@ -30,13 +30,16 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(244, 227, 248, 0.9), rgba(244, 227, 248, 0));
+    /*background: rgba(244, 227, 248, 0.5);*/
+
     
     
   
     .header-subsection{
         display: flex;
         align-items: center;
-        margin-top: 20px;
+        margin-top: 5px;
     
         
         .header-picture{
@@ -78,40 +81,42 @@ body{
     
     
     .hero-text{
+        
+        
         .hero-small-title{
 
         }
         .hero-title{
             font-size: 100px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: -25px;
         
         }
         .hero-paragraph{
-            margin-top: 10px;
             margin-bottom: 10px;
 
         }
-        .hero-paragraph-two{
-            margin-top: 10px;
-            margin-bottom: 10px;
+        .hero-paragraph-two
+          
 
         }
         .hero-button{
-            margin-top: 10px;
-            margin-bottom: 10px;
+           
 
         }
     }
     .hero-image{
-        align-content: center;
+        
     
         img{
-            width: 150px;
+            width: 100px;
             
             
         }
 
     }
-}
+
 .information-section{
     background-color: rgb(244, 227, 248);
     padding-top: 50px;
@@ -163,62 +168,49 @@ body{
 }
 .central-section{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     padding-top:50px;
-    padding-right: 100px;;
-    padding-bottom: 50px;
+    padding-right: 100px;
     padding-left: 100px;
-    .value-proposition-text{
-        
-       
-        .central-title{
-            
-        }
-        .central-paragraph{
-
-
-        }
-        
-        
-    }
-        
+    row-gap: 10px;
+    
     .central-signature{
         text-align: end;
-       
-        
-
-    }
-
-            
-        
+        padding-right: 50px;
+        font-weight: 600;
+        font-style: italic;
+    }   
 }
 .cta-container{
-    
-    justify-content: center;
-    align-content: center;
-    padding-top:50px;
-    padding-right: 100px;;
-    padding-bottom: 50px;
-    padding-left: 100px;
-    
-      
-    .cta-text{
-       
-
-        p{
-          
-        }
-
+        padding-top:50px;
+        padding-right: 100px;
+        padding-left: 100px;
+     
+    .cta-box{
+        justify-content: center;
+        align-content: center;
+        background-color:rgb(244, 227, 248);
+        padding-top:20px;
+        padding-right: 100px;
+        padding-bottom: 20px;
+        padding-left: 10px;
+        border-radius: 4px;
     }
+
+    .cta-text{
+      padding-bottom: 5px;
+    }
+
     .subscribe-input {
         flex: 1;
         padding: 12px 15px;
         font-size: 16px;
         border: 1px solid #ccc;
         border-radius: 4px 0 0 4px; 
-        outline: none;
-        
+        outline: none;  
     }
+
     .cta-button{
         padding: 12px 24px;
         font-size: 16px;
@@ -227,10 +219,10 @@ body{
         border: none;
         border-radius: 0 4px 4px 0; 
         cursor: pointer;
-        
+        }
+
 }
 
-    }
 .footer-section{
     display: flex;
     align-items: center;
