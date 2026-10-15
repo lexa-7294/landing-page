@@ -85,11 +85,14 @@ body{
                 font-size: 100px;
                 display: flex;
                 justify-content: space-between;
-                margin-bottom: -25px;
+               
             
             }
             .hero-paragraph{
                 margin-bottom: 10px;
+                p{
+                    line-height: 1.5;
+                }
 
             }
             .hero-paragraph-two
@@ -125,7 +128,10 @@ body{
     text-align: center;
 
     .information-title{
-        font-size: 50px;
+        /* MODIFICAT: În loc de font-size: 50px; folosim o valoare fluidă */
+        font-size: clamp(28px, 4.5vw, 50px); 
+        /* Siguranță: Împiedică complet textul să sară pe rândul al doilea */
+        white-space: nowrap;  
         padding-bottom: 10px;
         
     }
@@ -166,6 +172,10 @@ body{
     padding-right: 100px;
     padding-left: 100px;
     row-gap: 10px;
+
+     p {
+        line-height: 1.5;
+     }
     
     .central-signature{
         text-align: end;
@@ -184,7 +194,7 @@ body{
     margin: 0 auto;   /* Centrează tot containerul pe mijlocul paginii */
     padding-left: 20px;  /* Spațiu mic de siguranță pentru ecrane de telefon */
     padding-right: 20px;
-}
+
     .cta-box{
         display: flex;
     flex-direction: column; 
@@ -197,7 +207,7 @@ body{
     width: 100%;            /* Ocupă tot spațiul disponibil din container */
     gap: 15px;              
 }
-    }
+    
 
     .cta-text{
         text-align: center;
@@ -229,12 +239,13 @@ body{
         background-color: #000000;
         color: white;
         border: none;
-     border-radius: 0 4px 4px 0; 
+        border-radius: 0 4px 4px 0; 
         cursor: pointer;
         white-space: nowrap;        
         font-family: inherit;       
         letter-spacing: -0.5px; 
     }
+}
 
 .footer-section{
     left: 0;
