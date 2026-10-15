@@ -32,8 +32,9 @@ body{
 
 }
 
-/* NOU ȘI SALVATOR: Sacul devine resortul elastic */
+
 .content-container {
+    /* NOU ȘI SALVATOR: Sacul devine resortul elastic */
     display: flex; /*De acum încolo, această secțiune devine o cutie elastică și inteligentă. Elementele din interiorul ei nu mai au voie să fie rigide și împrăștiate.*/
     flex-direction: column; /* Așază secțiunile din interior tot sub formă de coloană */
     flex: 1 0 auto;     
@@ -105,8 +106,6 @@ body{
     }
 }
 
-
-
 .hero-section{ 
     padding-top: 50px;
     padding-bottom: 50px;
@@ -147,12 +146,19 @@ body{
     }
 }
         
-    
-
-
+  
     
 .information-section{
-    background-color: rgb(244, 227, 248);
+    background: linear-gradient(to bottom, 
+        rgba(244, 227, 248, 0) 0%,    /* Sus: Complet invizibil */
+        rgba(244, 227, 248, 1) 30%,   /* La 30% din înălțime devine plin și intens */
+        rgba(244, 227, 248, 1) 70%,   /* Rămâne plin până la 70% din înălțime */
+        rgba(244, 227, 248, 0) 100%   /* Jos: Se evaporă complet din nou */
+    );
+
+    
+
+    
     padding-top: 50px;
     padding-right: 100px;
     padding-bottom: 50px;
@@ -195,32 +201,29 @@ body{
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
-            
+            gap: 12px;
             /* Forțăm fiecare mică cutie de proiect să aibă o lățime de siguranță */
-            min-width: 120px; 
-        
-            .information-subsection img { 
-                    /* MAGIA PENTRU MOBIL 2: Folosim o valoare fluidă bazată pe ecran (vw) */
-                    width: clamp(40px, 6vw, 65px); 
-                    /* • clamp(40px, 6vw, 65px);
-                    -> „Pe telefon nu fi mai mică de 40px, pe laptop ai voie să crești până la 65px, 
-                        iar la mijloc modifică-te elastic ocupând exact 6% din lățimea ecranului.” */
-                        
-                    height: auto; /* Păstrează proporțiile imaginii ca să nu se deformeze */
-            }           
-             
+          
+            /* HAINELE DE BUTON: */
+            background-color: rgba(255, 255, 255, 0.45); /* Lasă culorile gradientului de dedesubt să treacă prin buton ca printr-o sticlă mată.” */
+            border: 1px solid rgba(255, 255, 255, 0.6); /* 2. O bordură fină gri de contur */
+            border-radius: 12px;        /* 3. Rotunjim colțurile ca să arate modern */
+            padding: 15px 20px;        /* 4. Padding interior generos ca să respire elementele */
+            min-width: 130px;          /* Previne strângerea excesivă pe mobil */
+            cursor: pointer;           /* 5. Transformă săgeata mouse-ului în lăbuță (mână) la atingere */
+            backdrop-filter: blur(8px); /*Browserule, blurează tot ce se vede în spatele butonului, ca și cum ar fi sticlă înghețată.” */
+            text-decoration: none;
+            backdrop-filter: blur(8px); 
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
             img{ 
                 width: 50px;
               
             }           
             .information-text{
-                
-                a{ 
-                    text-decoration: none;
-                    color: black;
-                   
-                }
+                color: #2d3748;
+                font-size: 15px;
+                transition: color 0.2s ease;
                 
             }
         }
