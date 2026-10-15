@@ -1,24 +1,23 @@
 * {
-    outline: 0px solid rgb(237, 18, 18);
+    outline: px solid rgb(237, 18, 18);
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 html, body{
     min-height: 100%;
     margin: 0;
+    padding:0;
 }
+
 body{
     display: flex;
     flex-direction: column;
     font-family:'Courier New', Courier, monospace;
-    min-height: 100vh; 
+    min-height: 100vh;
 }
-
-.body {
-  flex: 1;
-  display: flex;
-}
+    
 
 .header-section{
     position:sticky;
@@ -31,10 +30,6 @@ body{
     align-items: center;
     justify-content: space-between;
     background: linear-gradient(to bottom, rgba(244, 227, 248, 0.9), rgba(244, 227, 248, 0));
-    /*background: rgba(244, 227, 248, 0.5);*/
-
-    
-    
   
     .header-subsection{
         display: flex;
@@ -46,13 +41,11 @@ body{
             img{
                 border-radius: 50%;
                 width: 45px;
-           
             }
         }
         .header-logo{
             img{
                 height: 50px;
-                
             }
 
         }
@@ -73,20 +66,18 @@ body{
     }
 }
 
+
+
 .hero-section{ 
-    padding-top: 100px;
+    padding-top: 50px;
     padding-bottom: 50px;
     padding-right: 100px;
     padding-left: 100px;
-    }
-
+    
     .hero-container{ 
         display: flex;
     }
-    
         .hero-text{
-            
-            
             .hero-small-title{
 
             }
@@ -123,6 +114,7 @@ body{
     
 
 
+    }
 .information-section{
     background-color: rgb(244, 227, 248);
     padding-top: 50px;
@@ -136,17 +128,10 @@ body{
         font-size: 50px;
         padding-bottom: 10px;
         
-        
-        
-        
-        
-        
     }
     .information-container{
         justify-content: center;
         
-      
-
         .information-content{
             display: flex;
             justify-content: center;
@@ -172,6 +157,7 @@ body{
     }
     
 }
+
 .central-section{
     display: flex;
     flex-direction: column;
@@ -188,24 +174,43 @@ body{
         font-style: italic;
     }   
 }
+
 .cta-container{
-        padding-top:50px;
-        padding-right: 100px;
-        padding-left: 100px;
-     
+    padding-top: 50px;
+    padding-bottom: 50px;
+    /* ÎNLOCUIT: Nu mai folosim 100px fix. Folosim lațime maximă și auto-centrare */
+    width: 100%;
+    max-width: 800px; 
+    margin: 0 auto;   /* Centrează tot containerul pe mijlocul paginii */
+    padding-left: 20px;  /* Spațiu mic de siguranță pentru ecrane de telefon */
+    padding-right: 20px;
+}
     .cta-box{
-        justify-content: center;
-        align-content: center;
-        background-color:rgb(244, 227, 248);
-        padding-top:20px;
-        padding-right: 100px;
-        padding-bottom: 20px;
-        padding-left: 10px;
-        border-radius: 4px;
+        display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    justify-content: center;
+    background-color: rgb(244, 227, 248);
+    padding: 30px 20px;     /* Spațiu interior flexibil */
+    border-radius: 4px;
+    height: auto;           
+    width: 100%;            /* Ocupă tot spațiul disponibil din container */
+    gap: 15px;              
+}
     }
 
     .cta-text{
-      padding-bottom: 5px;
+        text-align: center;
+      
+    }
+
+    .subscribe-section {
+        display: flex;
+        flex-direction: row;    /* Pe ecrane mari stau pe același rând */
+        width: 100%;
+        max-width: 500px;   
+        flex-wrap: wrap; 
+        
     }
 
     .subscribe-input {
@@ -215,23 +220,28 @@ body{
         border: 1px solid #ccc;
         border-radius: 4px 0 0 4px; 
         outline: none;  
+        font-family: inherit;   /* Păstrează fontul Courier selectat de tine */
     }
 
     .cta-button{
-        padding: 12px 24px;
-        font-size: 16px;
+        padding: 12px 16px;        /* Am micșorat padding-ul lateral de la 24px la 16px */
+        font-size: 15px;           /* Am redus subtil dimensiunea textului pentru a-l compacta */
         background-color: #000000;
         color: white;
         border: none;
-        border-radius: 0 4px 4px 0; 
+     border-radius: 0 4px 4px 0; 
         cursor: pointer;
-        }
-
-}
+        white-space: nowrap;        
+        font-family: inherit;       
+        letter-spacing: -0.5px; 
+    }
 
 .footer-section{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    color: black;
+    z-index: 999;
 }
 
