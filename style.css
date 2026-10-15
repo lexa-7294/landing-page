@@ -1,23 +1,60 @@
 * {
-    outline: px solid rgb(237, 18, 18);
-    box-sizing: border-box;
+    outline: 0px solid rgb(116, 113, 113);
+    box-sizing: border-box; /*„Atunci când îți cer ca o cutie să aibă o lățime de 500 de pixeli, aceea trebuie să fie dimensiunea ei totală cu totul, incluzând și grosimea pereților (border) sau spațiul interior (padding). Nu ai voie să adaugi nimic în plus peste acești 500 de pixeli!”*/
     margin: 0;
     padding: 0;
 }
 
 html, body{
-    min-height: 100%;
+    min-height: 100%; 
+    /*acționează ca o corecție dinamica pentru ca pe mobil totul să rămână stabil, fără să apară erori de poziționare sau suprapuneri ciudate.
+    Fără această linie, browserul folosește un mod de calcul vechi și ciudat. Dacă ai avea o casetă de email de 300px lățime și i-ai adăuga un padding interior de 15px pe stânga și 15px pe dreapta, browserul le-ar aduna matematic (300 + 15 + 15) și ar face caseta de 330px. Din cauza asta, casetele deveneau mai mari decât le desenai tu și spărgeau design-ul, ieșind din ecrane.
+    Cu box-sizing: border-box;, browserul păstrează caseta la fix 300px, dar trage marginile în interior ca să facă loc textului. Practic, te scapă de durerile de cap cauzate de calculele matematice!
+    */
     margin: 0;
     padding:0;
 }
 
 body{
-    display: flex;
-    flex-direction: column;
-    font-family:'Courier New', Courier, monospace;
-    min-height: 100vh;
+    display: flex; /*De acum încolo, această secțiune devine o cutie elastică și inteligentă. Elementele din interiorul ei nu mai au voie să fie rigide și împrăștiate.*/
+    flex-direction: column; /*Vreau ca toate elementele din această cutie să fie așezate obligatoriu sub formă de coloană, adică frumos, unul sub altul, de sus în jos (nu unul lângă altul).*/
+    font-family:'Courier New', Courier, monospace; /*de pus in "*"? sau in header in html? */
+    min-height: 100vh; 
+    /*rigla cu care măsori ecranul fizic - Verifică înălțimea ferestrei browserului și întinde scheletul paginii (html) și corpul ei (body) exact până unde se termină ecranul.
+    • body
+	    • Traducere: „Mă adresez întregului corp al paginii, adică zonei mari în care stă absolut tot conținutul site-ului.”
+    • min-height:
+	    • Traducere: „Vreau ca înălțimea ta să fie de cel puțin... (adică ai voie să crești și mai mult dacă adaug mult text, dar nu ai voie sub nicio formă să fii mai mică de atât).”
+    • 100vh (Viewport Height)
+	    • Traducere: „...exact 100% din înălțimea ecranului pe care te privește utilizatorul în acest moment (fie că e un monitor uriaș, o tabletă sau un telefon).”
+    Indiferent de ce ecran folosește vizitatorul meu, întinde corpul paginii (body) în jos până când atinge dunga de jos a monitorului. Dacă adaug text mult, ai voie să te lungești oricât, dar dacă textul e scurt, rămâi întins cât tot ecranul, ca să avem pe ce să sprijinim footer-ul jos de tot.
+    */
+
 }
+
+/* NOU ȘI SALVATOR: Sacul devine resortul elastic */
+.content-container {
+    display: flex; /*De acum încolo, această secțiune devine o cutie elastică și inteligentă. Elementele din interiorul ei nu mai au voie să fie rigide și împrăștiate.*/
+    flex-direction: column; /* Așază secțiunile din interior tot sub formă de coloană */
+    flex: 1 0 auto;     
+    /* Gândește-te la această clasă ca la o „zonă elastică și lacomă” pe care ai pus-o între Header și Footer. Dacă ar fi să traducem instrucțiunile pe care i le dai browserului, ele sună exact așa:
+    • .content-container
+	    • Traducere: „Mă adresez cutiei mari care înghite tot conținutul site-ului meu (Hero, Proiecte, Citate, Formular), adică tot ce se află între tavanul paginii (Header) și podea (Footer).”
+    • flex: 1 (Proprietatea de creștere)
+	    • Traducere: „Dacă pe ecran rămâne orice palmă de spațiu gol (negru sau alb), umflă-te instantaneu ca un balon și ocupă tot acel spațiu rămas liber, împingând tot ce e sub tine (Footer-ul) la baza absolută a ecranului.”
+    • 0 (Proprietatea de micșorare)
+	    • Traducere: „Dacă utilizatorul intră de pe un ecran mic și spațiul devine îngust, nu ai voie să te strângi atât de tare încât să îți strivești elementele din interior sau să le decupezi.”
+    • auto (Dimensiunea de bază)
+	    • Traducere: „Măsoară-te singur în mod normal, în funcție de textul și imaginile pe care le pun în tine. Dacă conținutul depășește ecranul, lasă pagina să crească natural în jos.”
+    Tu, cutie de conținut, comportă-te ca un resort elastic între Header și Footer. Dacă pagina e aproape goală, umflă-te cât poți de mult și expulzează Footer-ul la marginea de jos a ecranului. Dacă adaug text mult, deschide-te ca un acordeon în jos, iar Footer-ul va coborî cuminte și se va arăta doar când utilizatorul dă scroll până la capăt.
     
+    Cum traduce browserul această ordine acum?
+    1. body este o coloană lungă cât tot ecranul.
+    2. În interiorul ei, browserul vede doar două elemente mari: sacul .content-wrapper și .footer-section.
+    3. Văzând că ai șters din secțiuni și a rămas spațiu gol în josul ecranului, sacul .content-wrapper zice: „Regula flex: 1 îmi ordonă să mă umflu! Mă lungesc cu spațiu invizibil până ating dunga de jos a ecranului.”
+    4. Footer-ul nu are încotro și este așezat perfect la baza monitorului.
+    */
+}
 
 .header-section{
     position:sticky;
@@ -26,14 +63,16 @@ body{
     padding-left: 20px;
     padding-right: 20px;
     height: 52px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; /*De acum încolo, această secțiune devine o cutie elastică și inteligentă. Elementele din interiorul ei nu mai au voie să fie rigide și împrăștiate.*/
+    align-items: center; /*Uită-te la elementele din această coloană/rand și aliniază-le pe toate perfect pe mijlocul ecranului, pe axa verticală/orizontala (să nu fie unele mai în stânga și altele mai în dreapta).*/
+    justify-content: space-between; /*Dacă mai rămâne spațiu gol în interiorul cutiei, trage toate elementele grupate exact pe centrul geometric (la mijlocul distanței dintre tavanul și podeaua cutiei).*/
     background: linear-gradient(to bottom, rgba(244, 227, 248, 0.9), rgba(244, 227, 248, 0));
+    
   
     .header-subsection{
-        display: flex;
-        align-items: center;
+        
+        display: flex; /*De acum încolo, această secțiune devine o cutie elastică și inteligentă. Elementele din interiorul ei nu mai au voie să fie rigide și împrăștiate.*/
+        align-items: center; /*Uită-te la elementele din această coloană/rand și aliniază-le pe toate perfect pe mijlocul ecranului, pe axa verticală/orizontala (să nu fie unele mai în stânga și altele mai în dreapta).*/
         margin-top: 5px;
     
         
@@ -54,7 +93,7 @@ body{
          align-items: center;
         
         ul{
-            display: flex;
+            display: flex; /*De acum încolo, această secțiune devine o cutie elastică și inteligentă. Elementele din interiorul ei nu mai au voie să fie rigide și împrăștiate.*/
             gap: 20px;
             list-style: none;
         }
@@ -74,36 +113,28 @@ body{
     padding-right: 100px;
     padding-left: 100px;
     
+
     .hero-container{ 
         display: flex;
-    }
-        .hero-text{
-            .hero-small-title{
-
-            }
-            .hero-title{
-                font-size: 100px;
-                display: flex;
-                justify-content: space-between;
-               
+        width: 100%;/* Ocupă tot spațiul disponibil din container */
+        max-width: 800px; /* Împiedică rândurile de text să devină obositor de lungi pe desktop */
+        margin: 0 auto; /*centrează tot containerul pe mijlocul paginii */
+       
+    
+        .hero-title{
+            font-size: 100px;
+            display: flex;
+            justify-content: space-between;
             
-            }
-            .hero-paragraph{
-                margin-bottom: 10px;
-                p{
-                    line-height: 1.5;
-                }
+        }
+        .hero-paragraph{
+            margin-bottom: 10px;
+        }
 
+            p{
+                line-height: 1.5;
             }
-            .hero-paragraph-two
-            
-
-            }
-            .hero-button{
-            
-
-            }
-        
+    
         .hero-image{
             
         
@@ -112,12 +143,14 @@ body{
                 
                 
             }
-
         }
+    }
+}
+        
     
 
 
-    }
+    
 .information-section{
     background-color: rgb(244, 227, 248);
     padding-top: 50px;
@@ -126,25 +159,56 @@ body{
     padding-left: 100px;
     justify-content: center;
     text-align: center;
+    
 
     .information-title{
         /* MODIFICAT: În loc de font-size: 50px; folosim o valoare fluidă */
         font-size: clamp(28px, 4.5vw, 50px); 
-        /* Siguranță: Împiedică complet textul să sară pe rândul al doilea */
-        white-space: nowrap;  
+        /* Siguranță: Împiedică complet textul să sară pe rândul al doilea 
+        white-space: nowrap;  */
         padding-bottom: 10px;
+        max-width: 800px; /* Împiedică rândurile de text să devină obositor de lungi pe desktop */
+        margin: 0 auto; /*centrează tot containerul pe mijlocul paginii */
+
         
     }
     .information-container{
         justify-content: center;
+        display: flex;
+        width: 100%;
+        max-width: 800px; /* Împiedică rândurile de text să devină obositor de lungi pe desktop */
+        margin: 0 auto; /*centrează tot containerul pe mijlocul paginii */
+
         
         .information-content{
-            display: flex;
+            display: flex; /*De acum încolo, această secțiune devine o cutie elastică și inteligentă. Elementele din interiorul ei nu mai au voie să fie rigide și împrăștiate.*/
             justify-content: center;
             gap: 30px;
+
+            width: 100%;
+            max-width: 1000px;
+            flex-wrap: wrap; /*Dacă ecranul e prea îngust, permite proiectelor să sară automat pe rândul următor în loc să se strivească! */
+
         }
         
-        .information-subsection{
+        .information-subsection {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            
+            /* Forțăm fiecare mică cutie de proiect să aibă o lățime de siguranță */
+            min-width: 120px; 
+        
+            .information-subsection img { 
+                    /* MAGIA PENTRU MOBIL 2: Folosim o valoare fluidă bazată pe ecran (vw) */
+                    width: clamp(40px, 6vw, 65px); 
+                    /* • clamp(40px, 6vw, 65px);
+                    -> „Pe telefon nu fi mai mică de 40px, pe laptop ai voie să crești până la 65px, 
+                        iar la mijloc modifică-te elastic ocupând exact 6% din lățimea ecranului.” */
+                        
+                    height: auto; /* Păstrează proporțiile imaginii ca să nu se deformeze */
+            }           
              
             img{ 
                 width: 50px;
@@ -155,6 +219,7 @@ body{
                 a{ 
                     text-decoration: none;
                     color: black;
+                   
                 }
                 
             }
@@ -164,49 +229,63 @@ body{
     
 }
 
-.central-section{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top:50px;
+.main-section{
+    width: 100%;
+    padding-top: 50px;
     padding-right: 100px;
     padding-left: 100px;
-    row-gap: 10px;
-
-     p {
-        line-height: 1.5;
-     }
+    line-height: 1.5; /*Pune o pernă fină de aer între rândurile din interiorul aceluiași paragraf.” */
     
-    .central-signature{
-        text-align: end;
-        padding-right: 50px;
-        font-weight: 600;
-        font-style: italic;
-    }   
+    
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 800px; /* Împiedică rândurile de text să devină obositor de lungi pe desktop */
+        margin: 0 auto; /*centrează tot containerul pe mijlocul paginii */
+    }
+    .main-content p {
+    margin-bottom: 10px; 
+    /* Construiește o curte invizibilă de 25 de pixeli sub podeaua fiecărui paragraf, forțând următorul text să coboare ca să avem spațiu aerisit de citire.” */
+    
+   
+    }
+
+    .logo-dreapta {
+    /* Măsurăm imaginea să nu fie uriașă */
+    width: 48px; 
+    height: auto;
+    align-self: flex-end; /*Deși ești bloc în coloană, desprinde-te și lipește-te exclusiv de peretele din DREAPTA.*/
+    margin-right: 200px;
+    }
 }
 
-.cta-container{
+.cta-section{
     padding-top: 50px;
     padding-bottom: 50px;
-    /* ÎNLOCUIT: Nu mai folosim 100px fix. Folosim lațime maximă și auto-centrare */
-    width: 100%;
-    max-width: 800px; 
-    margin: 0 auto;   /* Centrează tot containerul pe mijlocul paginii */
-    padding-left: 20px;  /* Spațiu mic de siguranță pentru ecrane de telefon */
-    padding-right: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    
+     /*margin: 0 auto; entrează tot containerul pe mijlocul paginii */
+     /*width: 100%;  ÎNLOCUIT: Nu mai folosim 100px fix. Folosim lațime maximă și auto-centrare 
+     max-width: 800px; */
+    
+   
 
     .cta-box{
         display: flex;
-    flex-direction: column; 
-    align-items: center;    
-    justify-content: center;
-    background-color: rgb(244, 227, 248);
-    padding: 30px 20px;     /* Spațiu interior flexibil */
-    border-radius: 4px;
-    height: auto;           
-    width: 100%;            /* Ocupă tot spațiul disponibil din container */
-    gap: 15px;              
-}
+        flex-direction: column; 
+        align-items: center;    
+        justify-content: center;
+        background-color: rgb(244, 227, 248);
+        padding: 30px 20px;     /* Spațiu interior flexibil */
+        border-radius: 4px;
+        height: auto;           
+        width: 100%;/* Ocupă tot spațiul disponibil din container */
+        max-width: 800px; /* Împiedică rândurile de text să devină obositor de lungi pe desktop */
+        margin: 0 auto; /*centrează tot containerul pe mijlocul paginii */
+        gap: 15px;              
+    }
     
 
     .cta-text{
@@ -247,12 +326,19 @@ body{
     }
 }
 
+/*in afara body*/
 .footer-section{
-    left: 0;
+    flex-shrink: 0; /* Îi interzicem browserului să strivească textul din footer */
     width: 100%;
     text-align: center;
-    background-color: white;
+    
     color: black;
-    z-index: 999;
+    /* MODIFICAT: Am tăiat din spațiul de sus și de jos (de la 20px la 10px) */
+    padding: 10px 0; 
+    
+    /* NOU: Forțăm textul să ocupe exact spațiul lui, fără aer suplimentar */
+    line-height: 1; 
+    font-size: 14px; /* O idee mai mic, ca să arate a subsol discret */
+
 }
 
